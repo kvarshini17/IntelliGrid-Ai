@@ -1,0 +1,28 @@
+# Environment / secrets -- never commit API keys
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+
+# Database (optional SQLite artifacts, if ever added)
+*.db
+
+# Logs
+*.log
+
+# Streamlit
+.streamlit/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Test cache
+.pytest_cache/

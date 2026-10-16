@@ -1,0 +1,32 @@
+pandas>=2.0.0
+numpy>=1.24.0
+scipy>=1.10.0
+# >=1.51.0: the UI uses width='stretch' on st.plotly_chart (first added in 1.51.0;
+# checked by inspecting the 1.50.0 vs 1.51.0 signatures). Runtime-tested on 1.65.0.
+streamlit>=1.51.0
+plotly>=5.18.0
+pytest>=7.4.0
+
+# RAG vector index -- lightweight, no heavy dependency chain.
+faiss-cpu>=1.7.4
+
+# Optional neural embedding upgrade. NOT required: rag/embeddings.py
+# auto-detects its absence and uses a TF-IDF fallback (see that module's
+# docstring for why -- in this project's reference environment, installing
+# this pulls in a multi-GB PyTorch/CUDA chain that exceeded available disk).
+# sentence-transformers>=2.5.0
+
+# Claude (Anthropic) -- the SDK is only imported when a key is configured, and the app
+# keeps working without it (retrieval-only fallback). Claude API access needs an API key
+# from the Anthropic Console; a Claude.ai subscription does not include it.
+anthropic>=0.40.0
+
+# Optional: lets config.py load a git-ignored .env file (ANTHROPIC_API_KEY=...).
+# Real environment variables and Streamlit secrets work without it.
+python-dotenv>=1.0.0
+
+# Optional LLM providers -- none is required; with no key the "null" provider
+# (retrieval-only) is used. Install only what you configure via
+# config.LLM_PROVIDER / the OLLAMA_*, OPENAI_API_KEY environment variables.
+# requests              # needed by OllamaProvider; already installed as a Streamlit dependency
+# openai>=1.12.0        # required only for llm.provider.OpenAIProvider
